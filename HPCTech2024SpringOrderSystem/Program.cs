@@ -3,17 +3,28 @@ using HPCTech2024SpringOrderSystem.Models;
 
 using (StoreContext context = new StoreContext())
 {
-    var products = (from p in context.Products
-                    where p.Price > 10.00M
-                    select p).ToList();
+    Console.Write("Enter First Name:");
+    string firstName = Console.ReadLine();
+    Console.Write("Enter Last Name:");
+    string lastName = Console.ReadLine();
 
-    foreach (var product in products)
+    var customer = (from c in context.Customers
+                    where c.FirstName == firstName && c.LastName == lastName
+                    select c).FirstOrDefault();
+
+    if (customer is null)
     {
-        Console.WriteLine($"Product Name:\t{product.Name}");
-        Console.WriteLine($"Price:\t{product.Price}");
-        Console.WriteLine();
-    }
+        Customer newCustomer = new Customer
+        {
+            FirstName = firstName,
+            LastName = lastName
+        };
+        Console.Write("Enter your address: ");
+        newCustomer.Address = Console.ReadLine();
+    } 
 
     
+
+
 
 }
