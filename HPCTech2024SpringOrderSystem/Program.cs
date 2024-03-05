@@ -3,24 +3,17 @@ using HPCTech2024SpringOrderSystem.Models;
 
 using (StoreContext context = new StoreContext())
 {
-    Product meatLovers = new()
+    var products = (from p in context.Products
+                    where p.Price > 10.00M
+                    select p).ToList();
+
+    foreach (var product in products)
     {
-        Name = "Meat Lovers", 
-        Price = 9.99m 
-    };
+        Console.WriteLine($"Product Name:\t{product.Name}");
+        Console.WriteLine($"Price:\t{product.Price}");
+        Console.WriteLine();
+    }
 
-    context.Products.Add(meatLovers);
-    // EDM - this adds it to the entity, but not the database
-
-    Product deluxePizza = new()
-    {
-        Name = "Deluxe Pizza",
-        Price = 12.99m
-    };
-
-    context.Products.Add(deluxePizza);
-
-    context.SaveChanges();
-    // this is where it adds the products to the database
+    
 
 }

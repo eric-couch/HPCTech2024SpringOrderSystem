@@ -19,5 +19,31 @@ internal class StoreContext : DbContext
     {
         optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=HPCTech2024SpringOrderSystem;Trusted_Connection=True;");
     }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Product>().HasData(new Product()
+        {
+            Id = 1,
+            Name = "Meat Lovers",
+            Price = 10.99M
+        });
+        modelBuilder.Entity<Product>().HasData(new Product()
+        {
+            Id = 2,
+            Name = "Deluxe Pizza",
+            Price = 12.99M
+        });
+        modelBuilder.Entity<Customer>().HasData(new Customer()
+        {
+            Id = 1,
+            FirstName = "Eric",
+            LastName = "Couch",
+            Address = "123 Main St",
+            Email = "eric.couch@cognizant.com",
+            Phone = "123-456-7890"
+        });
+
+    }
 }
 
