@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HPCTech2024SpringOrderSystem.Models;
 
-internal class OrderDetail
+public class OrderDetail
 {
     public int Id { get; set; }
     public int OrderId { get; set; }
@@ -17,4 +17,14 @@ internal class OrderDetail
 
     public Order Order { get; set; }
     public Product Product { get; set; }
+
+    public override string ToString()
+    {
+        //return $"Product: {Product.Name} - Quantity: {Quantity} - Price: {Product.Price:C}";
+        return $"""
+            Product: {Product.Name}
+            Quantity: {Quantity}
+            Price: {Product.Price:C}
+            """;
+    }
 }

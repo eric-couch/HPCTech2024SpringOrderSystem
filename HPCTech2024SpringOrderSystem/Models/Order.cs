@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HPCTech2024SpringOrderSystem.Models;
 
-internal class Order
+public class Order
 {
     public int Id { get; set; }
     public DateTime OrderDate { get; set; }
@@ -17,4 +17,13 @@ internal class Order
 
     public Customer Customer { get; set; }
     public ICollection<OrderDetail> OrderDetails { get; set; }
+
+    public override string ToString()
+    {
+        //return $"Order Date: {OrderDate} - Order Fullfilled: {OrderFullfilled?.ToString() ?? ""}";
+        return $"""
+            Order Date: {OrderDate}
+            Order Fullfilled: {OrderFullfilled?.ToString() ?? ""}
+            """;
+    }
 }

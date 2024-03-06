@@ -8,7 +8,7 @@ using HPCTech2024SpringOrderSystem.Models;
 
 namespace HPCTech2024SpringOrderSystem.Data;
 
-internal class StoreContext : DbContext
+public class StoreContext : DbContext
 {
     public DbSet<Customer> Customers { get; set; }
     public DbSet<Order> Orders { get; set; }
@@ -43,7 +43,34 @@ internal class StoreContext : DbContext
             Email = "eric.couch@cognizant.com",
             Phone = "123-456-7890"
         });
-
+        modelBuilder.Entity<Order>().HasData(new Order()
+        {
+            Id = 1,
+            OrderDate = DateTime.Now.AddMinutes(-45),
+            OrderFullfilled = DateTime.Now.AddMinutes(-25),
+            CustomerId = 1
+        });
+        modelBuilder.Entity<OrderDetail>().HasData(new OrderDetail()
+        {
+            Id = 1,
+            OrderId = 1,
+            ProductId = 1,
+            Quantity = 2
+        });
+        modelBuilder.Entity<Order>().HasData(new Order()
+        {
+            Id = 2,
+            OrderDate = DateTime.Now.AddMinutes(-30),
+            OrderFullfilled = DateTime.Now.AddMinutes(-15),
+            CustomerId = 1
+        });
+        modelBuilder.Entity<OrderDetail>().HasData(new OrderDetail()
+        {
+            Id = 2,
+            OrderId = 2,
+            ProductId = 2,
+            Quantity = 2
+        });
     }
 }
 

@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HPCTech2024SpringOrderSystem.Models;
 
-internal class Customer
+public class Customer
 {
     public int Id { get; set; }
     public string FirstName { get; set; }
@@ -18,4 +18,14 @@ internal class Customer
     public string? Email { get; set; }
 
     public ICollection<Order> Orders { get; set; }
+
+    public override string ToString()
+    {
+        return $"""
+            Name: {FirstName} {LastName}
+            Address: {Address}
+            Phone: {Phone}
+            Email: {Email}
+            """;
+    }
 }

@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HPCTech2024SpringOrderSystem.Models;
 
-internal class Product
+public class Product
 {
     public int Id { get; set; }
 
@@ -16,4 +16,13 @@ internal class Product
 
     [Column(TypeName = "decimal(12, 2)")]
     public decimal Price { get; set; }
+
+    public override string ToString()
+    {
+        //return $"{Name} - {Price:C}";
+        return $"""
+            Product Name: {Name}
+            Price: {Price:C}
+            """;
+    }
 }
