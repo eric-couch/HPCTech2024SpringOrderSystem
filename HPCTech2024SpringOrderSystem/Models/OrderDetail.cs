@@ -25,6 +25,7 @@ public class OrderDetail
             Product: {Product.Name}
             Quantity: {Quantity}
             Price: {Product.Price:C}
+
             """;
     }
 }

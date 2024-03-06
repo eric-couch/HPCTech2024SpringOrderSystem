@@ -23,6 +23,7 @@ public class Product
         return $"""
             Product Name: {Name}
             Price: {Price:C}
+
             """;
     }
 }

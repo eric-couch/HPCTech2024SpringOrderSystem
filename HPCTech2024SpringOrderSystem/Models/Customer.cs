@@ -26,6 +26,7 @@ public class Customer
             Address: {Address}
             Phone: {Phone}
             Email: {Email}
+
             """;
     }
 }

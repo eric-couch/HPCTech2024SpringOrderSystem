@@ -24,6 +24,7 @@ public class Order
         return $"""
             Order Date: {OrderDate}
             Order Fullfilled: {OrderFullfilled?.ToString() ?? ""}
+
             """;
     }
 }

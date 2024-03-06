@@ -30,6 +30,13 @@ public class OrderSystem
                 select c).FirstOrDefault();
     }
 
+    public List<Order> GetOrders(Customer customer)
+    {
+        return (    from o in _context.Orders
+                    where o.CustomerId == customer.Id
+                    select o).ToList();
+    }
+
     public static string MainMenu()
     {
         return $"""
